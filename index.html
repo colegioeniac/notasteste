@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LB6YF23R94"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -76,7 +77,6 @@
             cursor: pointer;
             font-weight: 500;
             margin-top: 10px;
-            display: none;
         }
         button:hover {
             background-color: #1e3d59;
@@ -190,12 +190,12 @@
         </div>
         <div id="camposRecuperacao" style="display: none;">
             <h2>Recuperação</h2>
-            <input type="number" id="notaEstudoDirigido" placeholder="Nota Estudo Dirigido (30%)" min="0" max="10" style="display: none;">
-            <input type="number" id="notaProvaRecuperacao" placeholder="Nota Prova (70%)" min="0" max="10" style="display: none;">
+            <input type="number" id="notaEstudoDirigido" placeholder="Nota Estudo Dirigido (30%)" min="0" max="10">
+            <input type="number" id="notaProvaRecuperacao" placeholder="Nota Prova (70%)" min="0" max="10">
         </div>
-        <button id="calcular-button" onclick="calcular()">Calcular</button>
-        <button class="clear" id="limpar-button" onclick="limparCampos()">Limpar</button>
-        <div class="result" id="resultado">Esperando ano escolar...</div>
+        <button onclick="calcular()">Calcular</button>
+        <button class="clear" onclick="limparCampos()">Limpar</button>
+        <div class="result" id="resultado">Esperando notas...</div>
         <div class="datetime" id="datetime">Carregando data/hora...</div>
         <div class="credits">Desenvolvido por Rafael Françoso e Lucas Rezende</div>
     </div>
@@ -211,22 +211,15 @@
             } else {
                 padraoButton.classList.remove('selected');
                 recuperacaoButton.classList.add('selected');
-                if (document.getElementById('ano-escolar').value) {
-                    camposRecuperacao.style.display = 'block';
-                }
+                camposRecuperacao.style.display = 'block';
             }
         }
 
         function mostrarCampos() {
             const anoEscolar = document.getElementById('ano-escolar').value;
             const camposNotas = document.getElementById('camposNotas');
-            const camposRecuperacao = document.getElementById('camposRecuperacao');
-            const calcularButton = document.getElementById('calcular-button');
-            const limparButton = document.getElementById('limpar-button');
             if (anoEscolar) {
                 camposNotas.style.display = 'block';
-                calcularButton.style.display = 'block';
-                limparButton.style.display = 'block';
                 if (anoEscolar === '9') {
                     document.getElementById('notaObj3').style.display = 'none';
                     document.getElementById('notaObj1').placeholder = 'Nota Prova Objetiva 1 (15%)';
@@ -239,9 +232,6 @@
                 }
             } else {
                 camposNotas.style.display = 'none';
-                camposRecuperacao.style.display = 'none';
-                calcularButton.style.display = 'none';
-                limparButton.style.display = 'none';
             }
         }
 
@@ -255,42 +245,46 @@
             const notaDissertativa = parseFloat(document.getElementById('notaDissertativa').value) || 0;
             const notaEstudoDirigido = parseFloat(document.getElementById('notaEstudoDirigido').value) || 0;
             const notaProvaRecuperacao = parseFloat(document.getElementById('notaProvaRecuperacao').value) || 0;
-
+            
             let soma;
             if (anoEscolar === '9') {
-                const notaFinalObj = (notaObj1 * 0.15) + (notaObj2 * 0.15);
+                const notaFinalObj = (notaObj1 * 0.15) + (notaObj2 * 0.15); // 15% cada prova objetiva
                 soma = notaFinalObj + (notaSimulado * 0.25) + (notaProfessor * 0.20) + (notaDissertativa * 0.25);
             } else {
-                const notaFinalObj = (notaObj1 * 0.10) + (notaObj2 * 0.10) + (notaObj3 * 0.10);
+                const notaFinalObj = (notaObj1 * 0.10) + (notaObj2 * 0.10) + (notaObj3 * 0.10); // 10% cada prova objetiva
                 soma = notaFinalObj + (notaSimulado * 0.25) + (notaProfessor * 0.20) + (notaDissertativa * 0.25);
             }
 
             const resultadoDiv = document.getElementById('resultado');
-            resultadoDiv.classList.remove('pass', 'fail');
-
+            
             if (document.getElementById('recuperacao-button').classList.contains('selected')) {
                 if (soma >= 6) {
                     resultadoDiv.classList.add('pass');
-                    resultadoDiv.innerHTML = `Parabéns! Você passou. Você não precisa fazer a recuperação.<br>Sua nota final é:<br><strong>${soma.toFixed(2)}</strong>`;
+                    resultadoDiv.classList.remove('fail');
+                    resultadoDiv.innerHTML = Sua nota final é: <strong>${soma.toFixed(2)}</strong><br>Parabéns! Você passou.<br>Você não precisa fazer a recuperação.;
                 } else {
                     const notaRecuperacao = (notaEstudoDirigido * 0.30) + (notaProvaRecuperacao * 0.70);
-                    const notaFinal = Math.min(notaRecuperacao, 6);
+                    const notaFinal = Math.min(notaRecuperacao, 6); // Nota máxima 6
                     if (notaRecuperacao >= 6) {
                         resultadoDiv.classList.add('pass');
-                        resultadoDiv.innerHTML = `Parabéns! Você passou na recuperação.<br>Sua nota final é:<br><strong>${notaFinal.toFixed(2)}</strong><br>Sua nota de recuperação é:<br><strong>${notaRecuperacao.toFixed(2)}</strong>`;
+                        resultadoDiv.classList.remove('fail');
+                        resultadoDiv.innerHTML = Sua nota de recuperação é: <strong>${notaRecuperacao.toFixed(2)}</strong><br>Parabéns! Você passou na recuperação.<br>Sua nota final é: <strong>${notaFinal.toFixed(2)}</strong>;
                     } else {
                         resultadoDiv.classList.add('fail');
-                        resultadoDiv.innerHTML = `Infelizmente, você não passou.<br>Sua nota final é:<br><strong>${notaFinal.toFixed(2)}</strong><br>Sua nota de recuperação é:<br><strong>${notaRecuperacao.toFixed(2)}</strong>`;
+                        resultadoDiv.classList.remove('pass');
+                        resultadoDiv.innerHTML = Sua nota de recuperação é: <strong>${notaRecuperacao.toFixed(2)}</strong><br>Infelizmente, você não passou. Sua nota final é: <strong>${notaFinal.toFixed(2)}</strong>;
                     }
                 }
             } else {
-                resultadoDiv.innerHTML = `Sua nota final é:<br><strong>${soma.toFixed(2)}</strong>`;
+                resultadoDiv.innerHTML = Sua nota final é: <strong>${soma.toFixed(2)}</strong>;
                 if (soma >= 6) {
                     resultadoDiv.classList.add('pass');
-                    resultadoDiv.innerHTML += `<br>Parabéns! Você passou.<br>Você está <strong>${(soma - 6).toFixed(2)}</strong> pontos acima da média.`;
+                    resultadoDiv.classList.remove('fail');
+                    resultadoDiv.innerHTML += <br>Parabéns! Você passou.<br>Você está <strong>${(soma - 6).toFixed(2)}</strong> pontos acima da média.;
                 } else {
                     resultadoDiv.classList.add('fail');
-                    resultadoDiv.innerHTML += `<br>Infelizmente, você não passou.<br>Você precisa de mais <strong>${(6 - soma).toFixed(2)}</strong> pontos para passar.`;
+                    resultadoDiv.classList.remove('pass');
+                    resultadoDiv.innerHTML += <br>Infelizmente, você não passou.<br>Você precisa de mais <strong>${(6 - soma).toFixed(2)}</strong> pontos para passar.;
                 }
             }
         }
@@ -304,13 +298,8 @@
             document.getElementById('notaDissertativa').value = '';
             document.getElementById('notaEstudoDirigido').value = '';
             document.getElementById('notaProvaRecuperacao').value = '';
-            document.getElementById('resultado').innerHTML = 'Esperando ano escolar...';
+            document.getElementById('resultado').innerHTML = 'Esperando cálculo...';
             document.getElementById('resultado').classList.remove('pass', 'fail');
-            document.getElementById('camposRecuperacao').style.display = 'none';
-            const calcularButton = document.getElementById('calcular-button');
-            const limparButton = document.getElementById('limpar-button');
-            calcularButton.style.display = 'none';
-            limparButton.style.display = 'none';
         }
 
         setInterval(() => {
