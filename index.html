@@ -76,6 +76,7 @@
             cursor: pointer;
             font-weight: 500;
             margin-top: 10px;
+            display: none;
         }
         button:hover {
             background-color: #1e3d59;
@@ -192,9 +193,9 @@
             <input type="number" id="notaEstudoDirigido" placeholder="Nota Estudo Dirigido (30%)" min="0" max="10" style="display: none;">
             <input type="number" id="notaProvaRecuperacao" placeholder="Nota Prova (70%)" min="0" max="10" style="display: none;">
         </div>
-        <button onclick="calcular()">Calcular</button>
-        <button class="clear" onclick="limparCampos()">Limpar</button>
-        <div class="result" id="resultado">Esperando notas...</div>
+        <button id="calcular-button" onclick="calcular()">Calcular</button>
+        <button class="clear" id="limpar-button" onclick="limparCampos()">Limpar</button>
+        <div class="result" id="resultado">Esperando ano escolar...</div>
         <div class="datetime" id="datetime">Carregando data/hora...</div>
         <div class="credits">Desenvolvido por Rafael Françoso e Lucas Rezende</div>
     </div>
@@ -220,8 +221,12 @@
             const anoEscolar = document.getElementById('ano-escolar').value;
             const camposNotas = document.getElementById('camposNotas');
             const camposRecuperacao = document.getElementById('camposRecuperacao');
+            const calcularButton = document.getElementById('calcular-button');
+            const limparButton = document.getElementById('limpar-button');
             if (anoEscolar) {
                 camposNotas.style.display = 'block';
+                calcularButton.style.display = 'block';
+                limparButton.style.display = 'block';
                 if (anoEscolar === '9') {
                     document.getElementById('notaObj3').style.display = 'none';
                     document.getElementById('notaObj1').placeholder = 'Nota Prova Objetiva 1 (15%)';
@@ -235,6 +240,8 @@
             } else {
                 camposNotas.style.display = 'none';
                 camposRecuperacao.style.display = 'none';
+                calcularButton.style.display = 'none';
+                limparButton.style.display = 'none';
             }
         }
 
@@ -297,9 +304,13 @@
             document.getElementById('notaDissertativa').value = '';
             document.getElementById('notaEstudoDirigido').value = '';
             document.getElementById('notaProvaRecuperacao').value = '';
-            document.getElementById('resultado').innerHTML = 'Esperando notas...';
+            document.getElementById('resultado').innerHTML = 'Esperando ano escolar...';
             document.getElementById('resultado').classList.remove('pass', 'fail');
-            document.getElementById('camposRecuperacao').style.display = 'none'; // Limpar visibilidade
+            document.getElementById('camposRecuperacao').style.display = 'none';
+            const calcularButton = document.getElementById('calcular-button');
+            const limparButton = document.getElementById('limpar-button');
+            calcularButton.style.display = 'none';
+            limparButton.style.display = 'none';
         }
 
         setInterval(() => {
