@@ -229,22 +229,64 @@
                     document.getElementById('notaObj2').placeholder = 'Nota Prova Objetiva 2 (10%)';
                     document.getElementById('notaObj3').placeholder = 'Nota Prova Objetiva 3 (10%)';
                 }
-                // Mostra os campos de recuperação se o menu de recuperação estiver selecionado
                 if (document.getElementById('recuperacao-button').classList.contains('selected')) {
                     document.getElementById('camposRecuperacao').style.display = 'block';
                 }
             } else {
                 camposNotas.style.display = 'none';
-                document.getElementById('camposRecuperacao').style.display = 'none'; // Esconde recuperação se não tiver ano selecionado
+                document.getElementById('camposRecuperacao').style.display = 'none';
             }
         }
 
         function calcular() {
-            // Função calcular sem alterações
+            const anoEscolar = document.getElementById('ano-escolar').value;
+            let mediaFinal = 0;
+
+            if (document.getElementById('recuperacao-button').classList.contains('selected')) {
+                // Cálculo para recuperação
+                const notaEstudoDirigido = parseFloat(document.getElementById('notaEstudoDirigido').value) || 0;
+                const notaProvaRecuperacao = parseFloat(document.getElementById('notaProvaRecuperacao').value) || 0;
+
+                mediaFinal = (notaEstudoDirigido * 0.3) + (notaProvaRecuperacao * 0.7);
+            } else {
+                // Cálculo padrão
+                const notaObj1 = parseFloat(document.getElementById('notaObj1').value) || 0;
+                const notaObj2 = parseFloat(document.getElementById('notaObj2').value) || 0;
+                const notaObj3 = parseFloat(document.getElementById('notaObj3').value) || 0;
+                const notaSimulado = parseFloat(document.getElementById('notaSimulado').value) || 0;
+                const notaProfessor = parseFloat(document.getElementById('notaProfessor').value) || 0;
+                const notaDissertativa = parseFloat(document.getElementById('notaDissertativa').value) || 0;
+
+                if (anoEscolar === '9') {
+                    mediaFinal = (notaObj1 * 0.15) + (notaObj2 * 0.15) + (notaSimulado * 0.25) + (notaProfessor * 0.2) + (notaDissertativa * 0.25);
+                } else {
+                    mediaFinal = (notaObj1 * 0.1) + (notaObj2 * 0.1) + (notaObj3 * 0.1) + (notaSimulado * 0.25) + (notaProfessor * 0.2) + (notaDissertativa * 0.25);
+                }
+            }
+
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.textContent = `Média Final: ${mediaFinal.toFixed(2)}`;
+
+            if (mediaFinal >= 6) {
+                resultadoDiv.classList.add('pass');
+                resultadoDiv.classList.remove('fail');
+                resultadoDiv.textContent += ' - Aprovado!';
+            } else {
+                resultadoDiv.classList.add('fail');
+                resultadoDiv.classList.remove('pass');
+                resultadoDiv.textContent += ' - Reprovado!';
+            }
         }
 
         function limparCampos() {
-            // Função limparCampos sem alterações
+            document.getElementById('ano-escolar').value = '';
+            document.getElementById('camposNotas').style.display = 'none';
+            document.getElementById('camposRecuperacao').style.display = 'none';
+            document.getElementById('resultado').textContent = 'Esperando notas...';
+            document.getElementById('resultado').classList.remove('pass', 'fail');
+            document.querySelectorAll('input[type="number"]').forEach(input => input.value = '');
+            document.getElementById('padrao-button').classList.add('selected');
+            document.getElementById('recuperacao-button').classList.remove('selected');
         }
 
         setInterval(() => {
