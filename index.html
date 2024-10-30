@@ -42,7 +42,7 @@
             padding: 20px;
             text-align: center;
             z-index: 2;
-            margin: 60px;
+            margin: 60px auto;
         }
         h1 {
             color: #1e3d59;
@@ -72,14 +72,14 @@
             font-size: 16px;
         }
         button {
-            background-color: #1e3d59;
+            background-color: #324a5e;
             color: #ffffff;
             cursor: pointer;
             font-weight: 500;
             margin-top: 10px;
         }
         button:hover {
-            background-color: #14283b;
+            background-color: #1e3d59;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         }
         button.clear {
@@ -141,16 +141,24 @@
             width: 48%;
             padding: 12px;
             margin: 10px 1%;
-            border: 2px solid #1e3d59;
+            border: 2px solid #324a5e;
             border-radius: 5px;
             box-sizing: border-box;
             font-size: 16px;
             font-weight: 500;
             cursor: pointer;
+            display: inline-block;
+            background-color: #e0e0e0;
+            color: #1e3d59;
         }
         .menu-button.selected {
             background-color: #1e3d59;
             color: #ffffff;
+        }
+        .menu-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -158,8 +166,10 @@
     <div class="container">
         <img src="Logo Eniac.webp" alt="Logo Eniac" style="width: 300px; margin-bottom: 10px;">
         <h1>Calculadora de Notas</h1>
-        <button class="menu-button selected" id="padrao-button" onclick="selectMenu('padrao')">Padrão</button>
-        <button class="menu-button" id="recuperacao-button" onclick="selectMenu('recuperacao')">Recuperação</button>
+        <div class="menu-container">
+            <button class="menu-button selected" id="padrao-button" onclick="selectMenu('padrao')">Padrão</button>
+            <button class="menu-button" id="recuperacao-button" onclick="selectMenu('recuperacao')">Recuperação</button>
+        </div>
         <label for="ano-escolar">Ano escolar:</label>
         <select id="ano-escolar" name="ano-escolar" onchange="mostrarCampos()">
             <option value="">Selecione...</option>
@@ -187,8 +197,8 @@
         <button class="clear" onclick="limparCampos()">Limpar</button>
         <div class="result" id="resultado">Esperando notas...</div>
         <div class="datetime" id="datetime">Carregando data/hora...</div>
+        <div class="credits">Desenvolvido por Rafael Françoso e Lucas Rezende</div>
     </div>
-    <div class="credits">Desenvolvido por Rafael Françoso e Lucas Rezende</div>
     <script>
         function selectMenu(menu) {
             const padraoButton = document.getElementById('padrao-button');
@@ -211,7 +221,6 @@
             if (anoEscolar) {
                 camposNotas.style.display = 'block';
                 if (anoEscolar === '9') {
-                    document
                     document.getElementById('notaObj3').style.display = 'none';
                     document.getElementById('notaObj1').placeholder = 'Nota Prova Objetiva 1 (15%)';
                     document.getElementById('notaObj2').placeholder = 'Nota Prova Objetiva 2 (15%)';
@@ -255,12 +264,12 @@
                     resultadoDiv.innerHTML = `Sua nota final é: <strong>${soma.toFixed(2)}</strong><br>Parabéns! Você passou.<br>Você não precisa fazer a recuperação.`;
                 } else {
                     const notaRecuperacao = (notaEstudoDirigido * 0.30) + (notaProvaRecuperacao * 0.70);
+                    const notaFinal = Math.min(notaRecuperacao, 6); // Nota máxima 6
                     if (notaRecuperacao >= 6) {
                         resultadoDiv.classList.add('pass');
                         resultadoDiv.classList.remove('fail');
-                        resultadoDiv.innerHTML = `Sua nota de recuperação é: <strong>${notaRecuperacao.toFixed(2)}</strong><br>Parabéns! Você passou na recuperação.`;
+                        resultadoDiv.innerHTML = `Sua nota de recuperação é: <strong>${notaRecuperacao.toFixed(2)}</strong><br>Parabéns! Você passou na recuperação.<br>Sua nota final é: <strong>${notaFinal.toFixed(2)}</strong>`;
                     } else {
-                        const notaFinal = Math.max(soma, notaRecuperacao);
                         resultadoDiv.classList.add('fail');
                         resultadoDiv.classList.remove('pass');
                         resultadoDiv.innerHTML = `Sua nota de recuperação é: <strong>${notaRecuperacao.toFixed(2)}</strong><br>Infelizmente, você não passou. Sua nota final é: <strong>${notaFinal.toFixed(2)}</strong>`;
