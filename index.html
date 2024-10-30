@@ -2,274 +2,301 @@
 <html lang="pt-br">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LB6YF23R94"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LB6YF23R94');
-</script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculadora de Notas - Eniac</title>
-<link rel="icon" href="data:,📱" type="image/x-icon">
-<link rel="shortcut icon" href="https://www.eniac.edu.br/hubfs/Favicon-Eniac.png">
-<style>
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    background-color: #1e3d59;
-    color: #f0a500;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-    animation: gradientBG 30s infinite alternate;
-}
-
-@keyframes gradientBG {
-    0% { background-color: #1e3d59; }
-    50% { background-color: #14283b; }
-    100% { background-color: #1e3d59; }
-}
-
-.container {
-    width: 90%;
-    max-width: 500px;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    padding: 20px;
-    text-align: center;
-    z-index: 2;
-    margin: 60px;
-}
-
-h1 {
-    color: #1e3d59;
-    font-weight: 700;
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-h2 {
-    color: #1e3d59;
-    font-weight: 500;
-    font-size: 20px;
-    margin-top: 20px;
-}
-
-label, .important-note {
-    color: #1e3d59;
-    font-weight: 500;
-    font-size: 18px;
-}
-
-input, button, select {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 2px solid #1e3d59;
-    border-radius: 5px;
-    box-sizing: border-box;
-    transition: all 0.3s ease;
-    font-size: 16px;
-}
-
-button {
-    background-color: #1e3d59;
-    color: #ffffff;
-    cursor: pointer;
-    font-weight: 500;
-    margin-top: 10px;
-}
-
-button:hover {
-    background-color: #14283b;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-button.clear {
-    background-color: #f44336;
-}
-
-button.clear:hover {
-    background-color: #d32f2f;
-}
-
-.result, .datetime {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 12px;
-    border-radius: 5px;
-    background-color: #f0a500;
-    color: #1e3d59;
-    transition: background-color 0.5s;
-}
-
-.result.pass {
-    background-color: #4CAF50;
-    color: #ffffff;
-}
-
-.result.fail {
-    background-color: #f44336;
-    color: #ffffff;
-}
-
-.credits {
-    margin-top: 20px;
-    font-size: 14px;
-    font-weight: normal;
-    color: #1e3d59;
-}
-
-.important-note {
-    font-size: 14px;
-    color: red;
-    margin-top: -5px;
-}
-
-@media (max-width: 768px) {
-    .container, input, button, select {
-        max-width: 100%;
-        padding: 8px;
-    }
-
-    .container {
-        padding: 15px;
-        margin-top: 60px;
-        margin: 5px
-    }
-
-    h1 {
-        font-size: 20px;
-    }
-
-    h2, label, .important-note {
-        font-size: 16px;
-    }
-
-    input, button, select {
-        font-size: 14px;
-    }
-}
-</style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LB6YF23R94"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-LB6YF23R94');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Notas - Eniac</title>
+    <link rel="icon" href="data:," type="image/x-icon">
+    <link rel="shortcut icon" href="https://www.eniac.edu.br/hubfs/Favicon-Eniac.png">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background-color: #1e3d59;
+            color: #f0a500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            animation: gradientBG 30s infinite alternate;
+        }
+        @keyframes gradientBG {
+            0% { background-color: #1e3d59; }
+            50% { background-color: #14283b; }
+            100% { background-color: #1e3d59; }
+        }
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            text-align: center;
+            z-index: 2;
+            margin: 60px;
+        }
+        h1 {
+            color: #1e3d59;
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #1e3d59;
+            font-weight: 500;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        label, .important-note {
+            color: #1e3d59;
+            font-weight: 500;
+            font-size: 18px;
+        }
+        input, button, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #1e3d59;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        button {
+            background-color: #1e3d59;
+            color: #ffffff;
+            cursor: pointer;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #14283b;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        button.clear {
+            background-color: #f44336;
+        }
+        button.clear:hover {
+            background-color: #d32f2f;
+        }
+        .result, .datetime {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 12px;
+            border-radius: 5px;
+            background-color: #f0a500;
+            color: #1e3d59;
+            transition: background-color 0.5s;
+        }
+        .result.pass {
+            background-color: #4CAF50;
+            color: #ffffff;
+        }
+        .result.fail {
+            background-color: #f44336;
+            color: #ffffff;
+        }
+        .credits {
+            margin-top: 20px;
+            font-size: 14px;
+            font-weight: normal;
+            color: #1e3d59;
+        }
+        .important-note {
+            font-size: 14px;
+            color: red;
+            margin-top: -5px;
+        }
+        @media (max-width: 768px) {
+            .container, input, button, select {
+                max-width: 100%;
+                padding: 8px;
+            }
+            .container {
+                padding: 15px;
+                margin-top: 60px;
+                margin: 5px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            h2, label, .important-note {
+                font-size: 16px;
+            }
+            input, button, select {
+                font-size: 14px;
+            }
+        }
+        .menu-button {
+            width: 48%;
+            padding: 12px;
+            margin: 10px 1%;
+            border: 2px solid #1e3d59;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .menu-button.selected {
+            background-color: #1e3d59;
+            color: #ffffff;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <img src="logo_eniac.jpg" alt="Logo Eniac" style="width: 300px; margin-bottom: 10px;">
-    <h1>Calculadora de Notas</h1>
-    <label for="ano-escolar">Ano escolar:</label>
-    <select id="ano-escolar" name="ano-escolar" onchange="mostrarCampos()">
-        <option value="">Selecione...</option>
-        <option value="9">9° Ano</option>
-        <option value="1">1° Ano EM</option>
-        <option value="2">2° Ano EM</option>
-        <option value="3">3° Ano EM</option>
-    </select>
-    <div class="important-note">* Selecionar o ano escolar é obrigatório</div>
-    <div id="camposNotas" style="display: none;">
-        <label for="ano-escolar">Tipo de calculo:</label>
-        <select id="tipo-calculo" name="tipo-calculo" onchange="mostrarCampos()">
+    <div class="container">
+        <img src="Logo Eniac.webp" alt="Logo Eniac" style="width: 300px; margin-bottom: 10px;">
+        <h1>Calculadora de Notas</h1>
+        <button class="menu-button selected" id="padrao-button" onclick="selectMenu('padrao')">Padrão</button>
+        <button class="menu-button" id="recuperacao-button" onclick="selectMenu('recuperacao')">Recuperação</button>
+        <label for="ano-escolar">Ano escolar:</label>
+        <select id="ano-escolar" name="ano-escolar" onchange="mostrarCampos()">
             <option value="">Selecione...</option>
-            <option value="school">Escola</option>
-            <option value="scholl">Escola + Recuperação</option>
-            <option value="scholl">Técnico</option>
-            <option value="scholl">Técnico + Recuperação</option>
+            <option value="9">9° Ano</option>
+            <option value="1">1° Ano EM</option>
+            <option value="2">2° Ano EM</option>
+            <option value="3">3° Ano EM</option>
         </select>
-        <h2>Avaliações</h2>
-        <input type="number" id="notaObj1" placeholder="Nota Prova Objetiva 1" min="0" max="10">
-        <input type="number" id="notaObj2" placeholder="Nota Prova Objetiva 2" min="0" max="10">
-        <input type="number" id="notaObj3" placeholder="Nota Prova Objetiva 3" min="0" max="10" style="display: none;">
-        <input type="number" id="notaSimulado" placeholder="Nota do Simulado (25%)" min="0" max="10">
-        <input type="number" id="notaProfessor" placeholder="Nota de Professor (20%)" min="0" max="10">
-        <input type="number" id="notaDissertativa" placeholder="Avaliação Dissertativa (25%)" min="0" max="10">
+        <div class="important-note">* Selecionar o ano escolar é obrigatório</div>
+        <div id="camposNotas" style="display: none;">
+            <h2>Avaliações</h2>
+            <input type="number" id="notaObj1" placeholder="Nota Prova Objetiva 1" min="0" max="10">
+            <input type="number" id="notaObj2" placeholder="Nota Prova Objetiva 2" min="0" max="10">
+            <input type="number" id="notaObj3" placeholder="Nota Prova Objetiva 3" min="0" max="10" style="display: none;">
+            <input type="number" id="notaSimulado" placeholder="Nota do Simulado (25%)" min="0" max="10">
+            <input type="number" id="notaProfessor" placeholder="Nota de Professor (20%)" min="0" max="10">
+            <input type="number" id="notaDissertativa" placeholder="Avaliação Dissertativa (25%)" min="0" max="10">
+        </div>
+        <div id="camposRecuperacao" style="display: none;">
+            <h2>Recuperação</h2>
+            <input type="number" id="notaEstudoDirigido" placeholder="Nota Estudo Dirigido (30%)" min="0" max="10">
+            <input type="number" id="notaProvaRecuperacao" placeholder="Nota Prova (70%)" min="0" max="10">
+        </div>
         <button onclick="calcular()">Calcular</button>
         <button class="clear" onclick="limparCampos()">Limpar</button>
         <div class="result" id="resultado">Esperando notas...</div>
         <div class="datetime" id="datetime">Carregando data/hora...</div>
     </div>
     <div class="credits">Desenvolvido por Rafael Françoso e Lucas Rezende</div>
-</div>
-
-<script>
-function mostrarCampos() {
-    const anoEscolar = document.getElementById('ano-escolar').value;
-    const camposNotas = document.getElementById('camposNotas');
-
-    if (anoEscolar) {
-        camposNotas.style.display = 'block';
-
-        if (anoEscolar === '9') {
-            document.getElementById('notaObj3').style.display = 'none';
-            document.getElementById('notaObj1').placeholder = 'Nota Prova Objetiva 1 (15%)';
-            document.getElementById('notaObj2').placeholder = 'Nota Prova Objetiva 2 (15%)';
-        } else {
-            document.getElementById('notaObj3').style.display = 'block';
-            document.getElementById('notaObj1').placeholder = 'Nota Prova Objetiva 1 (10%)';
-            document.getElementById('notaObj2').placeholder = 'Nota Prova Objetiva 2 (10%)';
-            document.getElementById('notaObj3').placeholder = 'Nota Prova Objetiva 3 (10%)';
+    <script>
+        function selectMenu(menu) {
+            const padraoButton = document.getElementById('padrao-button');
+            const recuperacaoButton = document.getElementById('recuperacao-button');
+            const camposRecuperacao = document.getElementById('camposRecuperacao');
+            if (menu === 'padrao') {
+                padraoButton.classList.add('selected');
+                recuperacaoButton.classList.remove('selected');
+                camposRecuperacao.style.display = 'none';
+            } else {
+                padraoButton.classList.remove('selected');
+                recuperacaoButton.classList.add('selected');
+                camposRecuperacao.style.display = 'block';
+            }
         }
-    } else {
-        camposNotas.style.display = 'none';
-    }
-}
 
-function calcular() {
-    const anoEscolar = document.getElementById('ano-escolar').value;
-    const notaObj1 = parseFloat(document.getElementById('notaObj1').value) || 0;
-    const notaObj2 = parseFloat(document.getElementById('notaObj2').value) || 0;
-    const notaObj3 = parseFloat(document.getElementById('notaObj3').value) || 0;
-    const notaSimulado = parseFloat(document.getElementById('notaSimulado').value) || 0;
-    const notaProfessor = parseFloat(document.getElementById('notaProfessor').value) || 0;
-    const notaDissertativa = parseFloat(document.getElementById('notaDissertativa').value) || 0;
+        function mostrarCampos() {
+            const anoEscolar = document.getElementById('ano-escolar').value;
+            const camposNotas = document.getElementById('camposNotas');
+            if (anoEscolar) {
+                camposNotas.style.display = 'block';
+                if (anoEscolar === '9') {
+                    document
+                    document.getElementById('notaObj3').style.display = 'none';
+                    document.getElementById('notaObj1').placeholder = 'Nota Prova Objetiva 1 (15%)';
+                    document.getElementById('notaObj2').placeholder = 'Nota Prova Objetiva 2 (15%)';
+                } else {
+                    document.getElementById('notaObj3').style.display = 'block';
+                    document.getElementById('notaObj1').placeholder = 'Nota Prova Objetiva 1 (10%)';
+                    document.getElementById('notaObj2').placeholder = 'Nota Prova Objetiva 2 (10%)';
+                    document.getElementById('notaObj3').placeholder = 'Nota Prova Objetiva 3 (10%)';
+                }
+            } else {
+                camposNotas.style.display = 'none';
+            }
+        }
 
-    let soma;
+        function calcular() {
+            const anoEscolar = document.getElementById('ano-escolar').value;
+            const notaObj1 = parseFloat(document.getElementById('notaObj1').value) || 0;
+            const notaObj2 = parseFloat(document.getElementById('notaObj2').value) || 0;
+            const notaObj3 = parseFloat(document.getElementById('notaObj3').value) || 0;
+            const notaSimulado = parseFloat(document.getElementById('notaSimulado').value) || 0;
+            const notaProfessor = parseFloat(document.getElementById('notaProfessor').value) || 0;
+            const notaDissertativa = parseFloat(document.getElementById('notaDissertativa').value) || 0;
+            const notaEstudoDirigido = parseFloat(document.getElementById('notaEstudoDirigido').value) || 0;
+            const notaProvaRecuperacao = parseFloat(document.getElementById('notaProvaRecuperacao').value) || 0;
+            
+            let soma;
+            if (anoEscolar === '9') {
+                const notaFinalObj = (notaObj1 * 0.15) + (notaObj2 * 0.15); // 15% cada prova objetiva
+                soma = notaFinalObj + (notaSimulado * 0.25) + (notaProfessor * 0.20) + (notaDissertativa * 0.25);
+            } else {
+                const notaFinalObj = (notaObj1 * 0.10) + (notaObj2 * 0.10) + (notaObj3 * 0.10); // 10% cada prova objetiva
+                soma = notaFinalObj + (notaSimulado * 0.25) + (notaProfessor * 0.20) + (notaDissertativa * 0.25);
+            }
 
-    if (anoEscolar === '9') {
-        const notaFinalObj = (notaObj1 * 0.15) + (notaObj2 * 0.15); // 15% cada prova objetiva
-        soma = notaFinalObj + (notaSimulado * 0.25) + (notaProfessor * 0.20) + (notaDissertativa * 0.25);
-    } else {
-        const notaFinalObj = (notaObj1 * 0.10) + (notaObj2 * 0.10) + (notaObj3 * 0.10); // 10% cada prova objetiva
-        soma = notaFinalObj + (notaSimulado * 0.25) + (notaProfessor * 0.20) + (notaDissertativa * 0.25);
-    }
+            const resultadoDiv = document.getElementById('resultado');
+            
+            if (document.getElementById('recuperacao-button').classList.contains('selected')) {
+                if (soma >= 6) {
+                    resultadoDiv.classList.add('pass');
+                    resultadoDiv.classList.remove('fail');
+                    resultadoDiv.innerHTML = `Sua nota final é: <strong>${soma.toFixed(2)}</strong><br>Parabéns! Você passou.<br>Você não precisa fazer a recuperação.`;
+                } else {
+                    const notaRecuperacao = (notaEstudoDirigido * 0.30) + (notaProvaRecuperacao * 0.70);
+                    if (notaRecuperacao >= 6) {
+                        resultadoDiv.classList.add('pass');
+                        resultadoDiv.classList.remove('fail');
+                        resultadoDiv.innerHTML = `Sua nota de recuperação é: <strong>${notaRecuperacao.toFixed(2)}</strong><br>Parabéns! Você passou na recuperação.`;
+                    } else {
+                        const notaFinal = Math.max(soma, notaRecuperacao);
+                        resultadoDiv.classList.add('fail');
+                        resultadoDiv.classList.remove('pass');
+                        resultadoDiv.innerHTML = `Sua nota de recuperação é: <strong>${notaRecuperacao.toFixed(2)}</strong><br>Infelizmente, você não passou. Sua nota final é: <strong>${notaFinal.toFixed(2)}</strong>`;
+                    }
+                }
+            } else {
+                resultadoDiv.innerHTML = `Sua nota final é: <strong>${soma.toFixed(2)}</strong>`;
+                if (soma >= 6) {
+                    resultadoDiv.classList.add('pass');
+                    resultadoDiv.classList.remove('fail');
+                    resultadoDiv.innerHTML += `<br>Parabéns! Você passou.<br>Você está <strong>${(soma - 6).toFixed(2)}</strong> pontos acima da média.`;
+                } else {
+                    resultadoDiv.classList.add('fail');
+                    resultadoDiv.classList.remove('pass');
+                    resultadoDiv.innerHTML += `<br>Infelizmente, você não passou.<br>Você precisa de mais <strong>${(6 - soma).toFixed(2)}</strong> pontos para passar.`;
+                }
+            }
+        }
 
-    const resultadoDiv = document.getElementById('resultado');
-    resultadoDiv.innerHTML = `Sua nota final é: <strong>${soma.toFixed(2)}</strong>`;
+        function limparCampos() {
+            document.getElementById('notaObj1').value = '';
+            document.getElementById('notaObj2').value = '';
+            document.getElementById('notaObj3').value = '';
+            document.getElementById('notaSimulado').value = '';
+            document.getElementById('notaProfessor').value = '';
+            document.getElementById('notaDissertativa').value = '';
+            document.getElementById('notaEstudoDirigido').value = '';
+            document.getElementById('notaProvaRecuperacao').value = '';
+            document.getElementById('resultado').innerHTML = 'Esperando cálculo...';
+            document.getElementById('resultado').classList.remove('pass', 'fail');
+        }
 
-    if (soma >= 6) {
-        const acima = soma - 6;
-        resultadoDiv.classList.add('pass');
-        resultadoDiv.classList.remove('fail');
-        resultadoDiv.innerHTML += `<br>Parabéns! Você passou.<br>Você está <strong>${acima.toFixed(2)}</strong> pontos acima da média.`;
-    } else {
-        const falta = 6 - soma;
-        resultadoDiv.classList.add('fail');
-        resultadoDiv.classList.remove('pass');
-        resultadoDiv.innerHTML += `<br>Infelizmente, você não passou.<br>Você precisa de mais <strong>${falta.toFixed(2)}</strong> pontos para passar.`;
-    }
-}
-
-function limparCampos() {
-    document.getElementById('notaObj1').value = '';
-    document.getElementById('notaObj2').value = '';
-    document.getElementById('notaObj3').value = '';
-    document.getElementById('notaSimulado').value = '';
-    document.getElementById('notaProfessor').value = '';
-    document.getElementById('notaDissertativa').value = '';
-    document.getElementById('resultado').innerHTML = 'Esperando cálculo...';
-    document.getElementById('resultado').classList.remove('pass', 'fail');
-}
-
-setInterval(() => {
-    const now = new Date();
-    document.getElementById('datetime').textContent = now.toLocaleString('pt-BR');
-}, 1000);
-</script>
+        setInterval(() => {
+            const now = new Date();
+            document.getElementById('datetime').textContent = now.toLocaleString('pt-BR');
+        }, 1000);
+    </script>
 </body>
 </html>
