@@ -261,30 +261,30 @@
                 if (soma >= 6) {
                     resultadoDiv.classList.add('pass');
                     resultadoDiv.classList.remove('fail');
-                    resultadoDiv.innerHTML = Sua nota final é: <strong>${soma.toFixed(2)}</strong><br>Parabéns! Você passou.<br>Você não precisa fazer a recuperação.;
+                    resultadoDiv.innerHTML = `Sua nota final é: <strong>${soma.toFixed(2)}</strong><br>Parabéns! Você passou.<br>Você não precisa fazer a recuperação.`;
                 } else {
                     const notaRecuperacao = (notaEstudoDirigido * 0.30) + (notaProvaRecuperacao * 0.70);
                     const notaFinal = Math.min(notaRecuperacao, 6); // Nota máxima 6
                     if (notaRecuperacao >= 6) {
                         resultadoDiv.classList.add('pass');
                         resultadoDiv.classList.remove('fail');
-                        resultadoDiv.innerHTML = Sua nota de recuperação é: <strong>${notaRecuperacao.toFixed(2)}</strong><br>Parabéns! Você passou na recuperação.<br>Sua nota final é: <strong>${notaFinal.toFixed(2)}</strong>;
+                        resultadoDiv.innerHTML = `Sua nota de recuperação é: <strong>${notaRecuperacao.toFixed(2)}</strong><br>Parabéns! Você passou na recuperação.<br>Sua nota final é: <strong>${notaFinal.toFixed(2)}</strong>`;
                     } else {
                         resultadoDiv.classList.add('fail');
                         resultadoDiv.classList.remove('pass');
-                        resultadoDiv.innerHTML = Sua nota de recuperação é: <strong>${notaRecuperacao.toFixed(2)}</strong><br>Infelizmente, você não passou. Sua nota final é: <strong>${notaFinal.toFixed(2)}</strong>;
+                        resultadoDiv.innerHTML = `Sua nota de recuperação é: <strong>${notaRecuperacao.toFixed(2)}</strong><br>Infelizmente, você não passou. Sua nota final é: <strong>${notaFinal.toFixed(2)}</strong>`;
                     }
                 }
             } else {
-                resultadoDiv.innerHTML = Sua nota final é: <strong>${soma.toFixed(2)}</strong>;
+                resultadoDiv.innerHTML = `Sua nota final é: <strong>${soma.toFixed(2)}</strong>`;
                 if (soma >= 6) {
                     resultadoDiv.classList.add('pass');
                     resultadoDiv.classList.remove('fail');
-                    resultadoDiv.innerHTML += <br>Parabéns! Você passou.<br>Você está <strong>${(soma - 6).toFixed(2)}</strong> pontos acima da média.;
+                    resultadoDiv.innerHTML += `<br>Parabéns! Você passou.<br>Você está <strong>${(soma - 6).toFixed(2)}</strong> pontos acima da média.`;
                 } else {
                     resultadoDiv.classList.add('fail');
                     resultadoDiv.classList.remove('pass');
-                    resultadoDiv.innerHTML += <br>Infelizmente, você não passou.<br>Você precisa de mais <strong>${(6 - soma).toFixed(2)}</strong> pontos para passar.;
+                    resultadoDiv.innerHTML += `<br>Infelizmente, você não passou.<br>Você precisa de mais <strong>${(6 - soma).toFixed(2)}</strong> pontos para passar.`;
                 }
             }
         }
