@@ -164,12 +164,14 @@
 </head>
 <body>
     <div class="container">
-        <img src="Logo Eniac.webp" alt="Logo Eniac" style="width: 300px; margin-bottom: 10px;">
+        <img src="logo_eniac.jpg" alt="Logo Eniac" style="width: 300px; margin-bottom: 10px;">
         <h1>Calculadora de Notas</h1>
+        
         <div class="menu-container">
             <button class="menu-button selected" id="padrao-button" onclick="selectMenu('padrao')">Padrão</button>
             <button class="menu-button" id="recuperacao-button" onclick="selectMenu('recuperacao')">Recuperação</button>
         </div>
+        
         <label for="ano-escolar">Ano escolar:</label>
         <select id="ano-escolar" name="ano-escolar" onchange="mostrarCampos()">
             <option value="">Selecione...</option>
@@ -178,6 +180,7 @@
             <option value="2">2° Ano EM</option>
             <option value="3">3° Ano EM</option>
         </select>
+        
         <div class="important-note">* Selecionar o ano escolar é obrigatório</div>
         <div id="camposNotas" style="display: none;">
             <h2>Avaliações</h2>
@@ -188,11 +191,13 @@
             <input type="number" id="notaProfessor" placeholder="Nota de Professor (20%)" min="0" max="10">
             <input type="number" id="notaDissertativa" placeholder="Avaliação Dissertativa (25%)" min="0" max="10">
         </div>
+        
         <div id="camposRecuperacao" style="display: none;">
             <h2>Recuperação</h2>
             <input type="number" id="notaEstudoDirigido" placeholder="Nota Estudo Dirigido (30%)" min="0" max="10">
             <input type="number" id="notaProvaRecuperacao" placeholder="Nota Prova (70%)" min="0" max="10">
         </div>
+       
         <button onclick="calcular()">Calcular</button>
         <button class="clear" onclick="limparCampos()">Limpar</button>
         <div class="result" id="resultado">Esperando notas...</div>
@@ -248,10 +253,10 @@
             
             let soma;
             if (anoEscolar === '9') {
-                const notaFinalObj = (notaObj1 * 0.15) + (notaObj2 * 0.15); // 15% cada prova objetiva
+                const notaFinalObj = (notaObj1 * 0.15) + (notaObj2 * 0.15);
                 soma = notaFinalObj + (notaSimulado * 0.25) + (notaProfessor * 0.20) + (notaDissertativa * 0.25);
             } else {
-                const notaFinalObj = (notaObj1 * 0.10) + (notaObj2 * 0.10) + (notaObj3 * 0.10); // 10% cada prova objetiva
+                const notaFinalObj = (notaObj1 * 0.10) + (notaObj2 * 0.10) + (notaObj3 * 0.10);
                 soma = notaFinalObj + (notaSimulado * 0.25) + (notaProfessor * 0.20) + (notaDissertativa * 0.25);
             }
 
@@ -264,7 +269,7 @@
                     resultadoDiv.innerHTML = `Sua nota final é: <strong>${soma.toFixed(2)}</strong><br>Parabéns! Você passou.<br>Você não precisa fazer a recuperação.`;
                 } else {
                     const notaRecuperacao = (notaEstudoDirigido * 0.30) + (notaProvaRecuperacao * 0.70);
-                    const notaFinal = Math.min(notaRecuperacao, 6); // Nota máxima 6
+                    const notaFinal = Math.min(notaRecuperacao, 6);
                     if (notaRecuperacao >= 6) {
                         resultadoDiv.classList.add('pass');
                         resultadoDiv.classList.remove('fail');
