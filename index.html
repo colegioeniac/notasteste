@@ -199,9 +199,9 @@
             <input type="number" id="notaProvaRecuperacao" placeholder="Nota Prova (70%)" min="0" max="10">
         </div>
        
-        <button onclick="calcular()">Calcular</button>
-        <button class="clear" onclick="limparCampos()">Limpar</button>
-        <div class="result" id="resultado">Esperando notas...</div>
+        <button style="display: none" id="calcular-button" onclick="calcular()">Calcular</button>
+        <button style="display: none" id="limpar-button" class="clear" onclick="limparCampos()">Limpar</button>
+        <div class="result" id="resultado">Esperando ano escolar...</div>
         <div class="datetime" id="datetime">Carregando data/hora...</div>
         <div class="credits">Desenvolvido por Rafael Françoso e Lucas Rezende</div>
     </div>
@@ -210,6 +210,7 @@
             const padraoButton = document.getElementById('padrao-button');
             const recuperacaoButton = document.getElementById('recuperacao-button');
             const camposRecuperacao = document.getElementById('camposRecuperacao');
+          
             
             if (menu === 'padrao') {
                 padraoButton.classList.add('selected');
@@ -225,9 +226,17 @@
         function mostrarCampos() {
             const anoEscolar = document.getElementById('ano-escolar').value;
             const camposNotas = document.getElementById('camposNotas');
+            const calcularButton = document.getElementById('calcular-button');
+            const limparButton = document.getElementById('limpar-button')
+            const campoResultado = document.getElementById('resultado')
             
             if (anoEscolar) {
                 camposNotas.style.display = 'block';
+ 
+                calcularButton.style.display = 'block';
+                limparButton.style.display = 'block';
+                campoResultado.innerHTML = "Esperando notas..."
+                
                 if (anoEscolar === '9') {
                     document.getElementById('notaObj3').style.display = 'none';
                     document.getElementById('notaObj1').placeholder = 'Nota Prova Objetiva 1 (15%)';
