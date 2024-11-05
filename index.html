@@ -185,7 +185,7 @@
         <div class="important-note">* Selecionar o ano escolar é obrigatório</div>
         <div id="camposNotas" style="display: none;">
             <h2>Avaliações</h2>
-            <input type="number" oninput="this.value = this.value.replace(',' , '.')" id="notaObj1" placeholder="Nota Prova Objetiva 1" min="0" max="10">
+            <input type="number" id="notaObj1" placeholder="Nota Prova Objetiva 1" min="0" max="10">
             <input type="number" id="notaObj2" placeholder="Nota Prova Objetiva 2" min="0" max="10">
             <input type="number" id="notaObj3" placeholder="Nota Prova Objetiva 3" min="0" max="10" style="display: none;">
             <input type="number" id="notaSimulado" placeholder="Nota do Simulado (25%)" min="0" max="10">
@@ -253,8 +253,13 @@
         }
 
         function calcular() {
+            function formatarNumero(numero){
+                numeroFormatado = parseFloat(numero.replace(/,/g, "."))
+                return numeroFormatado
+            }
+          
             const anoEscolar = document.getElementById('ano-escolar').value;
-            const notaObj1 = parseFloat((document.getElementById('notaObj1').value).replace(",",".")) || 0;
+            const notaObj1 = formatarNumero(document.getElementById('notaObj1').value) || 0;
             const notaObj2 = parseFloat((document.getElementById('notaObj2').value).replace(",",".")) || 0;
             const notaObj3 = parseFloat((document.getElementById('notaObj3').value).replace(",",".")) || 0;
             const notaSimulado = parseFloat((document.getElementById('notaSimulado').value).replace("," , ".")) || 0;
