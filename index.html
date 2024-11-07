@@ -257,6 +257,12 @@
                 numeroFormatado = parseFloat(numero.replace(/,/g, "."))
                 return numeroFormatado
             }
+
+            function formatarNumeroDecimal(num){
+                numFormatado = Math.floor(num * 100) / 100
+
+                return numFOrmatado
+            }
           
             const anoEscolar = document.getElementById('ano-escolar').value;
             const notaObj1 = formatarNumero(document.getElementById('notaObj1').value) || 0;
@@ -284,20 +290,20 @@
                     const acima = soma - 6
                     resultadoDiv.classList.add('pass');
                     resultadoDiv.classList.remove('fail');
-                    resultadoDiv.innerHTML = `Sua nota final é: <strong>${soma.toFixed(3)}</strong><br>Parabéns! Você passou.<br>Você não precisa fazer a recuperação.<br>Você está <strong>${acima.toFixed(2)}</strong> pontos acima da média.`;
+                    resultadoDiv.innerHTML = `Sua nota final é: <strong>${formatarNumeroDecimal(soma)}</strong><br>Parabéns! Você passou.<br>Você não precisa fazer a recuperação.<br>Você está <strong>${formatarNumeroDecimal(acima)}</strong> pontos acima da média.`;
                 } else {
                     const notaRecuperacao = (notaEstudoDirigido * 0.30) + (notaProvaRecuperacao * 0.70);
                     const notaFinal = Math.min(notaRecuperacao, 6)
                     if (notaRecuperacao >= 6) {
                         resultadoDiv.classList.add('pass');
                         resultadoDiv.classList.remove('fail');
-                        resultadoDiv.innerHTML = `Sua nota de recuperação é: <strong>${notaRecuperacao.toFixed(3)}</strong><br>Parabéns! Você passou na recuperação.<br>Sua nota final é: <strong>${notaFinal > soma ? notaFinal : soma}</strong>`;
+                        resultadoDiv.innerHTML = `Sua nota de recuperação é: <strong>${formatarNumeroDecimal(notaRecuperacao)}</strong><br>Parabéns! Você passou na recuperação.<br>Sua nota final é: <strong>${formatarNumeroDecimal(notaFinal > soma ? notaFinal : soma)}</strong>`;
                     } else {
                         const finalNota = soma > notaFinal ? soma : notaFinal
                         const acima = 6 - finalNota
                         resultadoDiv.classList.add('fail');
                         resultadoDiv.classList.remove('pass');
-                        resultadoDiv.innerHTML = `Sua nota de recuperação é: <strong>${notaRecuperacao}</strong><br>Infelizmente, você não passou. Sua nota final é: <strong>${finalNota}</strong><br>Você está <strong>${acima}</strong> pontos abaixo da média.`;
+                        resultadoDiv.innerHTML = `Sua nota de recuperação é: <strong>${formatarNumeroDecimal(notaRecuperacao)}</strong><br>Infelizmente, você não passou. Sua nota final é: <strong>${formatarNumeroDecimal(finalNota)}</strong><br>Você está <strong>${formatarNumeroDecimal(acima)}</strong> pontos abaixo da média.`;
                     }
                 }
             } else {
@@ -305,11 +311,11 @@
                 if (soma >= 6) {
                     resultadoDiv.classList.add('pass');
                     resultadoDiv.classList.remove('fail');
-                    resultadoDiv.innerHTML += `<br>Parabéns! Você passou.<br>Você está <strong>${(soma - 6).toFixed(2)}</strong> pontos acima da média.`;
+                    resultadoDiv.innerHTML += `<br>Parabéns! Você passou.<br>Você está <strong>${formatarNumeroDecimal(soma - 6)}</strong> pontos acima da média.`;
                 } else {
                     resultadoDiv.classList.add('fail');
                     resultadoDiv.classList.remove('pass');
-                    resultadoDiv.innerHTML += `<br>Infelizmente, você não passou.<br>Você precisa de mais <strong>${(6 - soma).toFixed(2)}</strong> pontos para passar.`;
+                    resultadoDiv.innerHTML += `<br>Infelizmente, você não passou.<br>Você precisa de mais <strong>${formatarNumeroDecimal(6 - soma)}</strong> pontos para passar.`;
                 }
             }
         }
