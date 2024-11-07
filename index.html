@@ -308,7 +308,7 @@
                     }
                 }
             } else {
-                resultadoDiv.innerHTML = `Sua nota final é: <strong>${soma.toFixed(3)}</strong>`;
+                resultadoDiv.innerHTML = `Sua nota final é: <strong>${formatarNumeroDecimal(soma)}</strong>`;
                 if (soma >= 6) {
                     resultadoDiv.classList.add('pass');
                     resultadoDiv.classList.remove('fail');
