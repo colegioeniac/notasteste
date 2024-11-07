@@ -265,14 +265,14 @@
             }
           
             const anoEscolar = document.getElementById('ano-escolar').value;
-            const notaObj1 = formatarNumero(document.getElementById('notaObj1').value) || 0;
-            const notaObj2 = parseFloat((document.getElementById('notaObj2').value).replace(",",".")) || 0;
-            const notaObj3 = parseFloat((document.getElementById('notaObj3').value).replace(",",".")) || 0;
-            const notaSimulado = parseFloat((document.getElementById('notaSimulado').value).replace("," , ".")) || 0;
-            const notaProfessor = parseFloat((document.getElementById('notaProfessor').value).replace(",",".")) || 0;
-            const notaDissertativa = parseFloat((document.getElementById('notaDissertativa').value).replace(",",".")) || 0;
-            const notaEstudoDirigido = parseFloat((document.getElementById('notaEstudoDirigido').value).replace(",",".")) || 0;
-            const notaProvaRecuperacao = parseFloat((document.getElementById('notaProvaRecuperacao').value).replace(",",".")) || 0;
+            const notaObj1 = parseFloat(document.getElementById('notaObj1').value) || 0;
+            const notaObj2 = parseFloat(document.getElementById('notaObj2').value) || 0;
+            const notaObj3 = parseFloat(document.getElementById('notaObj3').value) || 0;
+            const notaSimulado = parseFloat(document.getElementById('notaSimulado') || 0;
+            const notaProfessor = parseFloat(document.getElementById('notaProfessor').value) || 0;
+            const notaDissertativa = parseFloat(document.getElementById('notaDissertativa').value) || 0;
+            const notaEstudoDirigido = parseFloat(document.getElementById('notaEstudoDirigido').value) || 0;
+            const notaProvaRecuperacao = parseFloat(document.getElementById('notaProvaRecuperacao').value) || 0;
             
             let soma;
             if (anoEscolar === '9') {
@@ -284,6 +284,7 @@
             }
 
             const resultadoDiv = document.getElementById('resultado');
+            console.log(soma)
             
             if (document.getElementById('recuperacao-button').classList.contains('selected')) {
                 if (soma >= 6) {
