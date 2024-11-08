@@ -72,6 +72,11 @@
             transition: all 0.3s ease;
             font-size: 16px;
         }
+        #imagemconstrucao {
+          width: 80%;
+          height: 70%;
+          margin-left: 55px;
+        }
         button {
             background-color: #324a5e;
             color: #ffffff;
@@ -166,14 +171,15 @@
 <body>
     <div class="container">
         <img src="logo_eniac.jpg" alt="Logo Eniac" style="width: 300px; margin-bottom: 10px;">
-        <h1>Calculadora de Notas</h1>
+      <h1>Calculadora de Notas</h1>
         
         <div class="menu-container">
             <button class="menu-button selected" id="padrao-button" onclick="selectMenu('padrao')">Padrão</button>
             <button class="menu-button" id="recuperacao-button" onclick="selectMenu('recuperacao')">Recuperação</button>
+            <button class="menu-button" id="tecnico-button" onclick="selectMenu('tecnico')">Técnico</button>
         </div>
         
-        <label for="ano-escolar">Ano escolar:</label>
+        <label for="ano-escolar" id="ano-escolar-titulo">Ano escolar:</label>
         <select id="ano-escolar" name="ano-escolar" onchange="mostrarCampos()">
             <option value="">Selecione...</option>
             <option value="9">9° Ano</option>
@@ -181,8 +187,9 @@
             <option value="2">2° Ano EM</option>
             <option value="3">3° Ano EM</option>
         </select>
+      
         
-        <div class="important-note">* Caso sua nota tenha números depois da vírgula, utilize "." <br>Ex: 7.5.</div>
+        <div class="important-note" id="aviso">* Caso sua nota tenha números depois da vírgula, utilize "." <br>Ex: 7.5.</div>
         <div id="camposNotas" style="display: none;">
             <h2>Avaliações</h2>
             <input type="number" id="notaObj1" placeholder="Nota Prova Objetiva 1" min="0" max="10">
@@ -198,7 +205,12 @@
             <input type="number" id="notaEstudoDirigido" placeholder="Nota Estudo Dirigido (30%)" min="0" max="10">
             <input type="number" id="notaProvaRecuperacao" placeholder="Nota Prova (70%)" min="0" max="10">
         </div>
-       
+
+        <div id="camposTecnico" style="display: none;">
+            <h2>Em Breve! 🔨</h2>
+        </div>
+
+            <img src="https://hotelvaledaspedras.com.br/wp-content/uploads/2020/01/manuten%C3%A7%C3%A3o-png-4.png" style = "display: none" id="imagemconstrucao">
         <button style="display: none" id="calcular-button" onclick="calcular()">Calcular</button>
         <button style="display: none" id="limpar-button" class="clear" onclick="limparCampos()">Limpar</button>
         <div class="result" id="resultado">Esperando ano escolar...</div>
@@ -209,16 +221,53 @@
         function selectMenu(menu) {
             const padraoButton = document.getElementById('padrao-button');
             const recuperacaoButton = document.getElementById('recuperacao-button');
+            const tecnicoButton = document.getElementById('tecnico-button');
             const camposRecuperacao = document.getElementById('camposRecuperacao');
-          
+            const camposselecionarano = document.getElementById('ano-escolar');
+            const calcularbotao = document.getElementById('calcular-button')
+            const limparbotao = document.getElementById('limpar-button')
+            const anoescol = document.getElementById('ano-escolar-titulo')
+            const aviso = document.getElementById('aviso')
+            const resul = document.getElementById('resultado')
+            const image = document.getElementById('imagemconstrucao')
             if (menu === 'padrao') {
                 padraoButton.classList.add('selected');
                 recuperacaoButton.classList.remove('selected');
                 camposRecuperacao.style.display = 'none';
-            } else {
+                tecnicoButton.classList.remove('selected')
+                camposTecnico.style.display = 'none'
+                camposselecionarano.style.display = 'block'
+                calcularbotao.style.display = 'block'
+                limparbotao.style.display = 'block'
+                anoescol.style.display = 'block'
+                aviso.style.display = 'block'
+              resul.style.display = 'block'
+            } else if (menu === 'recuperacao') {
                 padraoButton.classList.remove('selected');
                 recuperacaoButton.classList.add('selected');
-                camposRecuperacao.style.display = 'block';
+                camposRecuperacao.style.display = 'block'; 
+                tecnicoButton.classList.remove('selected')
+                camposTecnico.style.display = 'none'
+                camposselecionarano.style.display = 'block'
+                calcularbotao.style.display = 'block'
+              limparbotao.style.display = 'block'
+              anoescol.style.display = 'block'
+                aviso.style.display = 'block'
+              resul.style.display = 'block'
+            } else {
+                padraoButton.classList.remove('selected');
+                recuperacaoButton.classList.remove('selected');
+                tecnicoButton.classList.add('selected')
+                camposTecnico.style.display = 'block'
+                camposRecuperacao.style.display = 'none';
+                camposselecionarano.style.display = 'none'
+                calcularbotao.style.display = 'none'
+                limparbotao.style.display = 'none'
+              anoescol.style.display = 'none'
+                aviso.style.display = 'none'
+              resul.style.display = 'none'
+              image.style.display = 'block'
+              
             }
         }
 
