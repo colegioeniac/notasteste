@@ -294,17 +294,16 @@
                     resultadoDiv.innerHTML = `Sua nota final é: <strong>${formatarNumeroDecimal(soma)}</strong><br>Parabéns! Você passou.<br>Você não precisa fazer a recuperação.<br>Você está <strong>${formatarNumeroDecimal(acima)}</strong> pontos acima da média.`;
                 } else {
                     const notaRecuperacao = (notaEstudoDirigido * 0.30) + (notaProvaRecuperacao * 0.70);
-                    const notaFinal = Math.min(notaRecuperacao, 6)
-                    if (notaRecuperacao >= 6) {
+                    const notaFinal = (notaRecuperacao + soma) / 2
+                    if (notaFinal >= 6) {
                         resultadoDiv.classList.add('pass');
                         resultadoDiv.classList.remove('fail');
-                        resultadoDiv.innerHTML = `Sua nota de recuperação é: <strong>${formatarNumeroDecimal(notaRecuperacao)}</strong><br>Parabéns! Você passou na recuperação.<br>Sua nota final é: <strong>${formatarNumeroDecimal(notaFinal > soma ? notaFinal : soma)}</strong>`;
+                        resultadoDiv.innerHTML = `Sua nota de recuperação é: <strong>${formatarNumeroDecimal(notaRecuperacao)}</strong><br>Parabéns! Você passou na recuperação.<br>Sua nota final é: <strong>${formatarNumeroDecimal(notaFinal)}</strong>`;
                     } else {
-                        const finalNota = soma > notaFinal ? soma : notaFinal
-                        const acima = 6 - finalNota
+                        const abaixo = 6 - notaFinal
                         resultadoDiv.classList.add('fail');
                         resultadoDiv.classList.remove('pass');
-                        resultadoDiv.innerHTML = `Sua nota de recuperação é: <strong>${formatarNumeroDecimal(notaRecuperacao)}</strong><br>Infelizmente, você não passou. Sua nota final é: <strong>${formatarNumeroDecimal(finalNota)}</strong><br>Você está <strong>${formatarNumeroDecimal(acima)}</strong> pontos abaixo da média.`;
+                        resultadoDiv.innerHTML = `Sua nota de recuperação é: <strong>${formatarNumeroDecimal(notaRecuperacao)}</strong><br>Infelizmente, você não passou. Sua nota final é: <strong>${formatarNumeroDecimal(notaFinal)}</strong><br>Você está <strong>${formatarNumeroDecimal(abaixo)}</strong> pontos abaixo da média.`;
                     }
                 }
             } else {
