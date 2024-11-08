@@ -75,7 +75,7 @@
         #imagemconstrucao {
           width: 80%;
           height: 70%;
-          margin-left: 55px;
+          margin-left: 60px;
         }
         button {
             background-color: #324a5e;
@@ -207,7 +207,7 @@
         </div>
 
         <div id="camposTecnico" style="display: none;">
-            <h2>Em Breve! 🔨</h2>
+            <h2 style="font-size: 35px">Em Breve! 🔨</h2>
         </div>
 
             <img src="https://hotelvaledaspedras.com.br/wp-content/uploads/2020/01/manuten%C3%A7%C3%A3o-png-4.png" style = "display: none" id="imagemconstrucao">
@@ -242,6 +242,7 @@
                 anoescol.style.display = 'block'
                 aviso.style.display = 'block'
               resul.style.display = 'block'
+              image.style.display = 'none'
             } else if (menu === 'recuperacao') {
                 padraoButton.classList.remove('selected');
                 recuperacaoButton.classList.add('selected');
@@ -254,6 +255,7 @@
               anoescol.style.display = 'block'
                 aviso.style.display = 'block'
               resul.style.display = 'block'
+              image.style.display = 'none'
             } else {
                 padraoButton.classList.remove('selected');
                 recuperacaoButton.classList.remove('selected');
