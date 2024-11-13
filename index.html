@@ -230,6 +230,7 @@
             const aviso = document.getElementById('aviso')
             const resul = document.getElementById('resultado')
             const image = document.getElementById('imagemconstrucao')
+            const camposNotass = document.getElementById('camposNotas)
             if (menu === 'padrao') {
                 padraoButton.classList.add('selected');
                 recuperacaoButton.classList.remove('selected');
@@ -243,6 +244,7 @@
                 aviso.style.display = 'block'
               resul.style.display = 'block'
               image.style.display = 'none'
+                camposNotass.style.display = 'block'
             } else if (menu === 'recuperacao') {
                 padraoButton.classList.remove('selected');
                 recuperacaoButton.classList.add('selected');
@@ -256,6 +258,7 @@
                 aviso.style.display = 'block'
               resul.style.display = 'block'
               image.style.display = 'none'
+                camposNotass.style.display = 'block'
             } else {
                 padraoButton.classList.remove('selected');
                 recuperacaoButton.classList.remove('selected');
@@ -269,6 +272,7 @@
                 aviso.style.display = 'none'
               resul.style.display = 'none'
               image.style.display = 'block'
+                camposNotass.style.display = 'none'
               
             }
         }
