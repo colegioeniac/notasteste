@@ -181,7 +181,7 @@
         
         <label for="ano-escolar" id="ano-escolar-titulo">Ano escolar:</label>
         <select id="ano-escolar" name="ano-escolar" onchange="mostrarCampos()">
-            <option value="">Selecione...</option>
+            <option value="0">Selecione...</option>
             <option value="9">9° Ano</option>
             <option value="1">1° Ano EM</option>
             <option value="2">2° Ano EM</option>
@@ -232,6 +232,7 @@
             const image = document.getElementById('imagemconstrucao')
             const camposNotas = document.getElementById('camposNotas');
             if (menu === 'padrao') {
+                camposselecionarano.selectedIndex = 0;
                 padraoButton.classList.add('selected');
                 recuperacaoButton.classList.remove('selected');
                 camposRecuperacao.style.display = 'none';
